@@ -1,0 +1,102 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  margin: 0;
+  background-color: #000;
+}
+
+.scores {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.game_board {
+  background-color: gray;
+  width: 100vmin;
+  height: 95vmin;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+
+  & .cell {
+    border: white 1px solid;
+  }
+  & .cell:nth-child(3n) {
+    background-color: brown;
+  }
+}
+
+.game_board .cell.snake_head {
+  background-color: yellow;
+  border: rgb(0, 0, 0) 2px solid;
+}
+
+.game_board .cell.snake {
+  background-color: green;
+  border: black 2px solid;
+}
+
+.game_board .cell.food {
+  position: relative;
+  z-index: 1000;
+  background-color: chocolate;
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px -10px chocolate;
+  }
+  to {
+    box-shadow: 0 0 10px 10px chocolate;
+  }
+}
+
+/* Game Over Message Styles */
+.game-over {
+  position: fixed; /* Position it at the top layer of the page */
+  top: 50%; /* Vertically center */
+  left: 50%; /* Horizontally center */
+  transform: translate(-50%, -50%); /* Adjust to truly center the element */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+  color: white; /* White text for contrast */
+  font-size: 32px; /* Set a larger font size */
+  font-weight: bold; /* Make the text bold */
+  padding: 20px 40px; /* Add some padding around the message */
+  border-radius: 10px; /* Slightly round the corners */
+  text-align: center; /* Center align the text inside */
+  z-index: 1000; /* Make sure it's above other content */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Add a subtle shadow for depth */
+}
+
+/* Optional: Add a nice transition effect when the game over message appears */
+.game-over {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.game-over.show {
+  opacity: 1; /* Make it fully visible */
+}
+
+.game-paused {
+  position: fixed; /* Position it at the top layer of the page */
+  top: 50%; /* Vertically center */
+  left: 50%; /* Horizontally center */
+  transform: translate(-50%, -50%); /* Adjust to truly center the element */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+  color: white; /* White text for contrast */
+  font-size: 32px; /* Set a larger font size */
+  font-weight: bold; /* Make the text bold */
+  padding: 20px 40px; /* Add some padding around the message */
+  border-radius: 10px; /* Slightly round the corners */
+  text-align: center; /* Center align the text inside */
+  z-index: 1000; /* Make sure it's above other content */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Add a subtle shadow for depth */
+}
